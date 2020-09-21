@@ -1,0 +1,1808 @@
+
+
+Microchip MPLAB XC8 Assembler V2.30 build 20200825195618 
+                                                                                               Fri Sep 18 20:37:37 2020
+
+Microchip MPLAB XC8 C Compiler v2.30 (Free license) build 20200825195618 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataCOMMON,global,class=CODE,delta=2,noexec
+     5                           	psect	idataBANK0,global,class=CODE,delta=2,noexec
+     6                           	psect	strings,global,class=STRING,delta=2,noexec
+     7                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     8                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     9                           	psect	dataCOMMON,global,class=COMMON,space=1,delta=1,noexec
+    10                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+    11                           	psect	inittext,global,class=CODE,delta=2
+    12                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+    13                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    14                           	psect	maintext,global,class=CODE,split=1,delta=2
+    15                           	psect	text1,local,class=CODE,merge=1,inline,delta=2
+    16                           	psect	text2,local,class=CODE,merge=1,inline,delta=2
+    17                           	psect	text3,local,class=CODE,merge=1,inline,delta=2
+    18                           	psect	text4,local,class=CODE,merge=1,inline,delta=2
+    19                           	psect	text5,local,class=CODE,merge=1,inline,delta=2
+    20                           	psect	text6,local,class=CODE,merge=1,inline,delta=2
+    21                           	psect	text7,local,class=CODE,merge=1,delta=2
+    22                           	psect	intentry,global,class=CODE,delta=2
+    23                           	psect	text8,local,class=CODE,merge=1,inline,delta=2
+    24                           	psect	text9,local,class=CODE,merge=1,inline,delta=2
+    25                           	psect	text10,local,class=CODE,merge=1,inline,delta=2
+    26                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    27                           	dabs	1,0x7E,2
+    28  0000                     
+    29                           ; Version 2.20
+    30                           ; Generated 12/02/2020 GMT
+    31                           ; 
+    32                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    33                           ; All rights reserved.
+    34                           ; 
+    35                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    36                           ; 
+    37                           ; Redistribution and use in source and binary forms, with or without modification, are
+    38                           ; permitted provided that the following conditions are met:
+    39                           ; 
+    40                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    41                           ;        conditions and the following disclaimer.
+    42                           ; 
+    43                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    44                           ;        of conditions and the following disclaimer in the documentation and/or other
+    45                           ;        materials provided with the distribution.
+    46                           ; 
+    47                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    48                           ;        software without specific prior written permission.
+    49                           ; 
+    50                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    51                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    52                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    53                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    54                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    55                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    56                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    57                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    58                           ; 
+    59                           ; 
+    60                           ; Code-generator required, PIC16F877A Definitions
+    61                           ; 
+    62                           ; SFR Addresses
+    63  0000                     	;# 
+    64  0001                     	;# 
+    65  0002                     	;# 
+    66  0003                     	;# 
+    67  0004                     	;# 
+    68  0005                     	;# 
+    69  0006                     	;# 
+    70  0007                     	;# 
+    71  0008                     	;# 
+    72  0009                     	;# 
+    73  000A                     	;# 
+    74  000B                     	;# 
+    75  000C                     	;# 
+    76  000D                     	;# 
+    77  000E                     	;# 
+    78  000E                     	;# 
+    79  000F                     	;# 
+    80  0010                     	;# 
+    81  0011                     	;# 
+    82  0012                     	;# 
+    83  0013                     	;# 
+    84  0014                     	;# 
+    85  0015                     	;# 
+    86  0015                     	;# 
+    87  0016                     	;# 
+    88  0017                     	;# 
+    89  0018                     	;# 
+    90  0019                     	;# 
+    91  001A                     	;# 
+    92  001B                     	;# 
+    93  001B                     	;# 
+    94  001C                     	;# 
+    95  001D                     	;# 
+    96  001E                     	;# 
+    97  001F                     	;# 
+    98  0081                     	;# 
+    99  0085                     	;# 
+   100  0086                     	;# 
+   101  0087                     	;# 
+   102  0088                     	;# 
+   103  0089                     	;# 
+   104  008C                     	;# 
+   105  008D                     	;# 
+   106  008E                     	;# 
+   107  0091                     	;# 
+   108  0092                     	;# 
+   109  0093                     	;# 
+   110  0094                     	;# 
+   111  0098                     	;# 
+   112  0099                     	;# 
+   113  009C                     	;# 
+   114  009D                     	;# 
+   115  009E                     	;# 
+   116  009F                     	;# 
+   117  010C                     	;# 
+   118  010D                     	;# 
+   119  010E                     	;# 
+   120  010F                     	;# 
+   121  018C                     	;# 
+   122  018D                     	;# 
+   123  0000                     	;# 
+   124  0001                     	;# 
+   125  0002                     	;# 
+   126  0003                     	;# 
+   127  0004                     	;# 
+   128  0005                     	;# 
+   129  0006                     	;# 
+   130  0007                     	;# 
+   131  0008                     	;# 
+   132  0009                     	;# 
+   133  000A                     	;# 
+   134  000B                     	;# 
+   135  000C                     	;# 
+   136  000D                     	;# 
+   137  000E                     	;# 
+   138  000E                     	;# 
+   139  000F                     	;# 
+   140  0010                     	;# 
+   141  0011                     	;# 
+   142  0012                     	;# 
+   143  0013                     	;# 
+   144  0014                     	;# 
+   145  0015                     	;# 
+   146  0015                     	;# 
+   147  0016                     	;# 
+   148  0017                     	;# 
+   149  0018                     	;# 
+   150  0019                     	;# 
+   151  001A                     	;# 
+   152  001B                     	;# 
+   153  001B                     	;# 
+   154  001C                     	;# 
+   155  001D                     	;# 
+   156  001E                     	;# 
+   157  001F                     	;# 
+   158  0081                     	;# 
+   159  0085                     	;# 
+   160  0086                     	;# 
+   161  0087                     	;# 
+   162  0088                     	;# 
+   163  0089                     	;# 
+   164  008C                     	;# 
+   165  008D                     	;# 
+   166  008E                     	;# 
+   167  0091                     	;# 
+   168  0092                     	;# 
+   169  0093                     	;# 
+   170  0094                     	;# 
+   171  0098                     	;# 
+   172  0099                     	;# 
+   173  009C                     	;# 
+   174  009D                     	;# 
+   175  009E                     	;# 
+   176  009F                     	;# 
+   177  010C                     	;# 
+   178  010D                     	;# 
+   179  010E                     	;# 
+   180  010F                     	;# 
+   181  018C                     	;# 
+   182  018D                     	;# 
+   183                           
+   184                           	psect	idataCOMMON
+   185  020B                     __pidataCOMMON:
+   186                           
+   187                           ;initializer for _nResets
+   188  020B  3414               	retlw	20
+   189                           
+   190                           	psect	idataBANK0
+   191  01D4                     __pidataBANK0:
+   192                           
+   193                           ;initializer for CounterTask@F874
+   194  01D4  343F               	retlw	63
+   195  01D5  3406               	retlw	6
+   196  01D6  345B               	retlw	91
+   197  01D7  344F               	retlw	79
+   198  01D8  3466               	retlw	102
+   199  01D9  346D               	retlw	109
+   200  01DA  347D               	retlw	125
+   201  01DB  3407               	retlw	7
+   202  01DC  347F               	retlw	127
+   203  01DD  346F               	retlw	111
+   204                           
+   205                           	psect	strings
+   206  01E7                     __pstrings:
+   207  01E7                     stringtab:
+   208  01E7                     __stringtab:
+   209  01E7                     stringcode:	
+   210                           ;	String table - string pointers are 1 byte each
+   211                           
+   212  01E7                     stringdir:
+   213  01E7  3001               	movlw	high stringdir
+   214  01E8  008A               	movwf	10
+   215  01E9  0804               	movf	4,w
+   216  01EA  0A84               	incf	4,f
+   217  01EB  0782               	addwf	2,f
+   218  01EC                     __stringbase:
+   219  01EC  3400               	retlw	0
+   220  01ED                     __end_of__stringtab:
+   221  01ED                     MotorTask@NO_STEPS:
+   222  01ED  3430               	retlw	48
+   223  01EE  3400               	retlw	0
+   224  01EF                     __end_ofMotorTask@NO_STEPS:
+   225  000E                     _TMR1	set	14
+   226  0008                     _PORTD	set	8
+   227  000B                     _INTCONbits	set	11
+   228  0006                     _PORTBbits	set	6
+   229  0007                     _PORTC	set	7
+   230  0080                     _TMR1ON	set	128
+   231  0085                     _T1CKPS1	set	133
+   232  0084                     _T1CKPS0	set	132
+   233  0081                     _TMR1CS	set	129
+   234  0060                     _TMR1IF	set	96
+   235  0088                     _TRISD	set	136
+   236  0086                     _TRISBbits	set	134
+   237  0087                     _TRISC	set	135
+   238  0460                     _TMR1IE	set	1120
+   239                           
+   240                           	psect	cinit
+   241  0011                     start_initialization:	
+   242                           ; #config settings
+   243                           
+   244  0011                     __initialization:
+   245                           
+   246                           ; Initialize objects allocated to BANK0
+   247  0011  1383               	bcf	3,7	;select IRP bank0
+   248  0012  303E               	movlw	low (__pdataBANK0+10)
+   249  0013  00FD               	movwf	btemp+-1
+   250  0014  3001               	movlw	high __pidataBANK0
+   251  0015  00FE               	movwf	btemp
+   252  0016  30D4               	movlw	low __pidataBANK0
+   253  0017  00FF               	movwf	btemp+1
+   254  0018  3034               	movlw	low __pdataBANK0
+   255  0019  0084               	movwf	4
+   256  001A  120A  118A  21C5  120A  118A  	fcall	init_ram0
+   257                           
+   258                           ; Initialize objects allocated to COMMON
+   259  001F  120A  118A  220B  120A  118A  	fcall	__pidataCOMMON	;fetch initializer
+   260  0024  00FB               	movwf	__pdataCOMMON& (0+127)
+   261                           
+   262                           ; Clear objects allocated to COMMON
+   263  0025  01FA               	clrf	__pbssCOMMON& (0+127)
+   264  0026                     end_of_initialization:	
+   265                           ;End of C runtime variable initialization code
+   266                           
+   267  0026                     __end_of__initialization:
+   268  0026  0183               	clrf	3
+   269  0027  120A  118A  299D   	ljmp	_main	;jump to C main() function
+   270                           
+   271                           	psect	bssCOMMON
+   272  007A                     __pbssCOMMON:
+   273  007A                     _counter:
+   274  007A                     	ds	1
+   275                           
+   276                           	psect	dataCOMMON
+   277  007B                     __pdataCOMMON:
+   278  007B                     _nResets:
+   279  007B                     	ds	1
+   280                           
+   281                           	psect	dataBANK0
+   282  0034                     __pdataBANK0:
+   283  0034                     CounterTask@F874:
+   284  0034                     	ds	10
+   285                           
+   286                           	psect	inittext
+   287  01C1                     init_fetch0:	
+   288                           ;	Called with low address in FSR and high address in W
+   289                           
+   290  01C1  087E               	movf	btemp,w
+   291  01C2  008A               	movwf	10
+   292  01C3  087F               	movf	btemp+1,w
+   293  01C4  0082               	movwf	2
+   294  01C5                     init_ram0:	
+   295                           ;Called with:
+   296                           ;	high address of idata address in btemp 
+   297                           ;	low address of idata address in btemp+1 
+   298                           ;	low address of data in FSR
+   299                           ;	high address + 1 of data in btemp-1
+   300                           
+   301  01C5  120A  118A  21C1  120A  118A  	fcall	init_fetch0
+   302  01CA  0080               	movwf	0
+   303  01CB  0A84               	incf	4,f
+   304  01CC  0804               	movf	4,w
+   305  01CD  067D               	xorwf	btemp+-1,w
+   306  01CE  1903               	btfsc	3,2
+   307  01CF  3400               	retlw	0
+   308  01D0  0AFF               	incf	btemp+1,f
+   309  01D1  1903               	btfsc	3,2
+   310  01D2  0AFE               	incf	btemp,f
+   311  01D3  29C5               	goto	init_ram0
+   312                           
+   313                           	psect	cstackCOMMON
+   314  0070                     __pcstackCOMMON:
+   315  0070                     ?_initMotorTask:
+   316  0070                     ?_resetMotor:	
+   317                           ; 1 bytes @ 0x0
+   318                           
+   319  0070                     ?_MotorTask:	
+   320                           ; 1 bytes @ 0x0
+   321                           
+   322  0070                     ?_initLampTask:	
+   323                           ; 1 bytes @ 0x0
+   324                           
+   325  0070                     ?_resetLamp:	
+   326                           ; 1 bytes @ 0x0
+   327                           
+   328  0070                     ?_LampTask:	
+   329                           ; 1 bytes @ 0x0
+   330                           
+   331  0070                     ?_initCounterTask:	
+   332                           ; 1 bytes @ 0x0
+   333                           
+   334  0070                     ??_initCounterTask:	
+   335                           ; 1 bytes @ 0x0
+   336                           
+   337  0070                     ?_resetCounter:	
+   338                           ; 1 bytes @ 0x0
+   339                           
+   340  0070                     ??_resetCounter:	
+   341                           ; 1 bytes @ 0x0
+   342                           
+   343  0070                     ?_CounterTask:	
+   344                           ; 1 bytes @ 0x0
+   345                           
+   346  0070                     ?_SwitchPress:	
+   347                           ; 1 bytes @ 0x0
+   348                           
+   349  0070                     ?_main:	
+   350                           ; 1 bytes @ 0x0
+   351                           
+   352  0070                     CounterTask@maxCount:	
+   353                           ; 1 bytes @ 0x0
+   354                           
+   355                           
+   356                           ; 2 bytes @ 0x0
+   357  0070                     	ds	2
+   358  0072                     ??_CounterTask:
+   359                           
+   360                           ; 1 bytes @ 0x2
+   361  0072                     	ds	4
+   362  0076                     ??_SwitchPress:
+   363                           
+   364                           ; 1 bytes @ 0x6
+   365  0076                     	ds	4
+   366                           
+   367                           	psect	cstackBANK0
+   368  0020                     __pcstackBANK0:
+   369  0020                     CounterTask@segmentCode:
+   370                           
+   371                           ; 10 bytes @ 0x0
+   372  0020                     	ds	10
+   373  002A                     CounterTask@i:
+   374                           
+   375                           ; 2 bytes @ 0xA
+   376  002A                     	ds	2
+   377  002C                     ??_initMotorTask:
+   378  002C                     ??_resetMotor:	
+   379                           ; 1 bytes @ 0xC
+   380                           
+   381  002C                     ??_MotorTask:	
+   382                           ; 1 bytes @ 0xC
+   383                           
+   384  002C                     ??_initLampTask:	
+   385                           ; 1 bytes @ 0xC
+   386                           
+   387  002C                     ??_resetLamp:	
+   388                           ; 1 bytes @ 0xC
+   389                           
+   390  002C                     ??_LampTask:	
+   391                           ; 1 bytes @ 0xC
+   392                           
+   393                           
+   394                           ; 1 bytes @ 0xC
+   395  002C                     	ds	3
+   396  002F                     MotorTask@i:
+   397  002F                     LampTask@i:	
+   398                           ; 2 bytes @ 0xF
+   399                           
+   400                           
+   401                           ; 2 bytes @ 0xF
+   402  002F                     	ds	2
+   403  0031                     MotorTask@i_123:
+   404                           
+   405                           ; 2 bytes @ 0x11
+   406  0031                     	ds	2
+   407  0033                     MotorTask@j:
+   408                           
+   409                           ; 1 bytes @ 0x13
+   410  0033                     	ds	1
+   411  0034                     ??_main:
+   412                           
+   413                           	psect	maintext
+   414  019D                     __pmaintext:	
+   415                           ; 1 bytes @ 0x14
+   416 ;;
+   417 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   418 ;;
+   419 ;; *************** function _main *****************
+   420 ;; Defined at:
+   421 ;;		line 34 in file "main.c"
+   422 ;; Parameters:    Size  Location     Type
+   423 ;;		None
+   424 ;; Auto vars:     Size  Location     Type
+   425 ;;		None
+   426 ;; Return value:  Size  Location     Type
+   427 ;;                  1    wreg      void 
+   428 ;; Registers used:
+   429 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   430 ;; Tracked objects:
+   431 ;;		On entry : B00/0
+   432 ;;		On exit  : 0/0
+   433 ;;		Unchanged: 0/0
+   434 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   435 ;;      Params:         0       0       0       0       0
+   436 ;;      Locals:         0       0       0       0       0
+   437 ;;      Temps:          0       0       0       0       0
+   438 ;;      Totals:         0       0       0       0       0
+   439 ;;Total ram usage:        0 bytes
+   440 ;; Hardware stack levels required when called:    5
+   441 ;; This function calls:
+   442 ;;		_LampTask
+   443 ;;		_MotorTask
+   444 ;; This function is called by:
+   445 ;;		Startup code after reset
+   446 ;; This function uses a non-reentrant model
+   447 ;;
+   448                           
+   449                           
+   450                           ;psect for function _main
+   451  019D                     _main:
+   452  019D                     l947:	
+   453                           ;incstack = 0
+   454                           ; Regs used in _main: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   455                           
+   456                           
+   457                           ;main.c: 36:     INTCONbits.GIE = 1;
+   458  019D  178B               	bsf	11,7	;volatile
+   459                           
+   460                           ;main.c: 37:     INTCONbits.INTE = 1;
+   461  019E  160B               	bsf	11,4	;volatile
+   462                           
+   463                           ;main.c: 38:     INTCONbits.PEIE = 1;
+   464  019F  170B               	bsf	11,6	;volatile
+   465                           
+   466                           ;main.c: 41:     TRISBbits.TRISB3 = 0;
+   467  01A0  1683               	bsf	3,5	;RP0=1, select bank1
+   468  01A1  1303               	bcf	3,6	;RP1=0, select bank1
+   469  01A2  1186               	bcf	6,3	;volatile
+   470                           
+   471                           ;main.c: 42:     PORTBbits.RB3 = 0;
+   472  01A3  1283               	bcf	3,5	;RP0=0, select bank0
+   473  01A4  1303               	bcf	3,6	;RP1=0, select bank0
+   474  01A5  1186               	bcf	6,3	;volatile
+   475                           
+   476                           ;main.c: 45:     TMR1 = 15536;
+   477  01A6  303C               	movlw	60
+   478  01A7  008F               	movwf	15	;volatile
+   479  01A8  30B0               	movlw	176
+   480  01A9  008E               	movwf	14	;volatile
+   481                           
+   482                           ;main.c: 48:     TMR1IE = 1;
+   483  01AA  1683               	bsf	3,5	;RP0=1, select bank1
+   484  01AB  1303               	bcf	3,6	;RP1=0, select bank1
+   485  01AC  140C               	bsf	12,0	;volatile
+   486                           
+   487                           ;main.c: 49:     TMR1CS = 0;
+   488  01AD  1283               	bcf	3,5	;RP0=0, select bank0
+   489  01AE  1303               	bcf	3,6	;RP1=0, select bank0
+   490  01AF  1090               	bcf	16,1	;volatile
+   491                           
+   492                           ;main.c: 50:     T1CKPS0 = 0;
+   493  01B0  1210               	bcf	16,4	;volatile
+   494                           
+   495                           ;main.c: 51:     T1CKPS1 = 0;
+   496  01B1  1290               	bcf	16,5	;volatile
+   497                           
+   498                           ;main.c: 52:     TMR1ON = 1;
+   499  01B2  1410               	bsf	16,0	;volatile
+   500  01B3                     l949:
+   501                           
+   502                           ;main.c: 57:         LampTask();
+   503  01B3  120A  118A  2113  120A  118A  	fcall	_LampTask
+   504  01B8                     l951:
+   505                           
+   506                           ;main.c: 58:         MotorTask();
+   507  01B8  120A  118A  202A  120A  118A  	fcall	_MotorTask
+   508  01BD  29B3               	goto	l949
+   509  01BE  120A  118A  280E   	ljmp	start
+   510  01C1                     __end_of_main:
+   511                           
+   512                           	psect	text1
+   513  002A                     __ptext1:	
+   514 ;; *************** function _MotorTask *****************
+   515 ;; Defined at:
+   516 ;;		line 94 in file "./system.h"
+   517 ;; Parameters:    Size  Location     Type
+   518 ;;		None
+   519 ;; Auto vars:     Size  Location     Type
+   520 ;;  i               2   17[BANK0 ] int 
+   521 ;;  i               2   15[BANK0 ] int 
+   522 ;;  j               1   19[BANK0 ] unsigned char 
+   523 ;; Return value:  Size  Location     Type
+   524 ;;                  1    wreg      void 
+   525 ;; Registers used:
+   526 ;;		wreg, status,2, status,0, pclath, cstack
+   527 ;; Tracked objects:
+   528 ;;		On entry : 0/0
+   529 ;;		On exit  : 0/0
+   530 ;;		Unchanged: 0/0
+   531 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   532 ;;      Params:         0       0       0       0       0
+   533 ;;      Locals:         0       5       0       0       0
+   534 ;;      Temps:          0       3       0       0       0
+   535 ;;      Totals:         0       8       0       0       0
+   536 ;;Total ram usage:        8 bytes
+   537 ;; Hardware stack levels used:    1
+   538 ;; Hardware stack levels required when called:    4
+   539 ;; This function calls:
+   540 ;;		_initMotorTask
+   541 ;;		_resetMotor
+   542 ;; This function is called by:
+   543 ;;		_main
+   544 ;; This function uses a non-reentrant model
+   545 ;;
+   546                           
+   547                           
+   548                           ;psect for function _MotorTask
+   549  002A                     _MotorTask:
+   550  002A                     l833:	
+   551                           ;incstack = 0
+   552                           ; Regs used in _MotorTask: [wreg+status,2+status,0+pclath+cstack]
+   553                           
+   554                           
+   555                           ;./system.h: 95:     initMotorTask();
+   556  002A  120A  118A  21F7  120A  118A  	fcall	_initMotorTask
+   557  002F                     l835:
+   558                           
+   559                           ;./system.h: 96:     unsigned char j = 0;
+   560  002F  1283               	bcf	3,5	;RP0=0, select bank0
+   561  0030  1303               	bcf	3,6	;RP1=0, select bank0
+   562  0031  01B3               	clrf	MotorTask@j
+   563  0032                     l837:
+   564                           
+   565                           ;./system.h: 97:     unsigned short int const NO_STEPS = 48;;./system.h: 98:     for (in
+      +                          t i=0; i<NO_STEPS; i++){
+   566  0032  01AF               	clrf	MotorTask@i
+   567  0033  01B0               	clrf	MotorTask@i+1
+   568  0034                     l843:
+   569                           
+   570                           ;./system.h: 99:         PORTC = (unsigned char)(1 << j);
+   571  0034  3001               	movlw	1
+   572  0035  00AC               	movwf	??_MotorTask
+   573  0036  0A33               	incf	MotorTask@j,w
+   574  0037  283A               	goto	u164
+   575  0038                     u165:
+   576  0038  1003               	clrc
+   577  0039  0DAC               	rlf	??_MotorTask,f
+   578  003A                     u164:
+   579  003A  3EFF               	addlw	-1
+   580  003B  1D03               	skipz
+   581  003C  2838               	goto	u165
+   582  003D  082C               	movf	??_MotorTask,w
+   583  003E  0087               	movwf	7	;volatile
+   584  003F                     l845:
+   585                           
+   586                           ;./system.h: 100:         _delay((unsigned long)((100)*(4000000/4000.0)));
+   587  003F  3082               	movlw	130
+   588  0040  1283               	bcf	3,5	;RP0=0, select bank0
+   589  0041  1303               	bcf	3,6	;RP1=0, select bank0
+   590  0042  00AD               	movwf	??_MotorTask+1
+   591  0043  30DD               	movlw	221
+   592  0044  00AC               	movwf	??_MotorTask
+   593  0045                     u317:
+   594  0045  0BAC               	decfsz	??_MotorTask,f
+   595  0046  2845               	goto	u317
+   596  0047  0BAD               	decfsz	??_MotorTask+1,f
+   597  0048  2845               	goto	u317
+   598  0049                     l847:
+   599                           
+   600                           ;./system.h: 101:         j++;
+   601  0049  3001               	movlw	1
+   602  004A  1283               	bcf	3,5	;RP0=0, select bank0
+   603  004B  1303               	bcf	3,6	;RP1=0, select bank0
+   604  004C  00AC               	movwf	??_MotorTask
+   605  004D  082C               	movf	??_MotorTask,w
+   606  004E  07B3               	addwf	MotorTask@j,f
+   607  004F                     l849:
+   608                           
+   609                           ;./system.h: 102:         if(j==4){
+   610  004F  3004               	movlw	4
+   611  0050  0633               	xorwf	MotorTask@j,w
+   612  0051  1D03               	btfss	3,2
+   613  0052  2854               	goto	u171
+   614  0053  2855               	goto	u170
+   615  0054                     u171:
+   616  0054  2856               	goto	l853
+   617  0055                     u170:
+   618  0055                     l851:
+   619                           
+   620                           ;./system.h: 103:             j = 0;
+   621  0055  01B3               	clrf	MotorTask@j
+   622  0056                     l853:
+   623                           
+   624                           ;./system.h: 105:     }
+   625  0056  3001               	movlw	1
+   626  0057  07AF               	addwf	MotorTask@i,f
+   627  0058  1803               	skipnc
+   628  0059  0AB0               	incf	MotorTask@i+1,f
+   629  005A  3000               	movlw	0
+   630  005B  07B0               	addwf	MotorTask@i+1,f
+   631  005C                     l855:
+   632  005C  3000               	movlw	0
+   633  005D  0230               	subwf	MotorTask@i+1,w
+   634  005E  3030               	movlw	48
+   635  005F  1903               	skipnz
+   636  0060  022F               	subwf	MotorTask@i,w
+   637  0061  1C03               	skipc
+   638  0062  2864               	goto	u181
+   639  0063  2865               	goto	u180
+   640  0064                     u181:
+   641  0064  2834               	goto	l843
+   642  0065                     u180:
+   643  0065                     l857:
+   644                           
+   645                           ;./system.h: 106:     _delay((unsigned long)((1000)*(4000000/4000.0)));
+   646  0065  3006               	movlw	6
+   647  0066  1283               	bcf	3,5	;RP0=0, select bank0
+   648  0067  1303               	bcf	3,6	;RP1=0, select bank0
+   649  0068  00AE               	movwf	??_MotorTask+2
+   650  0069  3013               	movlw	19
+   651  006A  00AD               	movwf	??_MotorTask+1
+   652  006B  30AD               	movlw	173
+   653  006C  00AC               	movwf	??_MotorTask
+   654  006D                     u327:
+   655  006D  0BAC               	decfsz	??_MotorTask,f
+   656  006E  286D               	goto	u327
+   657  006F  0BAD               	decfsz	??_MotorTask+1,f
+   658  0070  286D               	goto	u327
+   659  0071  0BAE               	decfsz	??_MotorTask+2,f
+   660  0072  286D               	goto	u327
+   661  0073                     l859:
+   662                           
+   663                           ;./system.h: 108:     j = 0;
+   664  0073  1283               	bcf	3,5	;RP0=0, select bank0
+   665  0074  1303               	bcf	3,6	;RP1=0, select bank0
+   666  0075  01B3               	clrf	MotorTask@j
+   667  0076                     l861:
+   668                           
+   669                           ;./system.h: 109:     for (int i=0; i<NO_STEPS; i++){
+   670  0076  01B1               	clrf	MotorTask@i_123
+   671  0077  01B2               	clrf	MotorTask@i_123+1
+   672  0078                     l865:
+   673                           
+   674                           ;./system.h: 110:         PORTC = (unsigned char)(8 >> j);
+   675  0078  0A33               	incf	MotorTask@j,w
+   676  0079  00AC               	movwf	??_MotorTask
+   677  007A  3008               	movlw	8
+   678  007B  00AD               	movwf	??_MotorTask+1
+   679  007C  3000               	movlw	0
+   680  007D  00AE               	movwf	??_MotorTask+2
+   681  007E  2882               	goto	u194
+   682  007F                     u195:
+   683  007F  0D2E               	rlf	??_MotorTask+2,w
+   684  0080  0CAE               	rrf	??_MotorTask+2,f
+   685  0081  0CAD               	rrf	??_MotorTask+1,f
+   686  0082                     u194:
+   687  0082  0BAC               	decfsz	??_MotorTask,f
+   688  0083  287F               	goto	u195
+   689  0084  1283               	bcf	3,5	;RP0=0, select bank0
+   690  0085  1303               	bcf	3,6	;RP1=0, select bank0
+   691  0086  082D               	movf	??_MotorTask+1,w
+   692  0087  0087               	movwf	7	;volatile
+   693  0088                     l867:
+   694                           
+   695                           ;./system.h: 111:         _delay((unsigned long)((100)*(4000000/4000.0)));
+   696  0088  3082               	movlw	130
+   697  0089  1283               	bcf	3,5	;RP0=0, select bank0
+   698  008A  1303               	bcf	3,6	;RP1=0, select bank0
+   699  008B  00AD               	movwf	??_MotorTask+1
+   700  008C  30DD               	movlw	221
+   701  008D  00AC               	movwf	??_MotorTask
+   702  008E                     u337:
+   703  008E  0BAC               	decfsz	??_MotorTask,f
+   704  008F  288E               	goto	u337
+   705  0090  0BAD               	decfsz	??_MotorTask+1,f
+   706  0091  288E               	goto	u337
+   707  0092                     l869:
+   708                           
+   709                           ;./system.h: 112:         j++;
+   710  0092  3001               	movlw	1
+   711  0093  1283               	bcf	3,5	;RP0=0, select bank0
+   712  0094  1303               	bcf	3,6	;RP1=0, select bank0
+   713  0095  00AC               	movwf	??_MotorTask
+   714  0096  082C               	movf	??_MotorTask,w
+   715  0097  07B3               	addwf	MotorTask@j,f
+   716  0098                     l871:
+   717                           
+   718                           ;./system.h: 113:         if(j==4){
+   719  0098  3004               	movlw	4
+   720  0099  0633               	xorwf	MotorTask@j,w
+   721  009A  1D03               	btfss	3,2
+   722  009B  289D               	goto	u201
+   723  009C  289E               	goto	u200
+   724  009D                     u201:
+   725  009D  289F               	goto	l875
+   726  009E                     u200:
+   727  009E                     l873:
+   728                           
+   729                           ;./system.h: 114:             j = 0;
+   730  009E  01B3               	clrf	MotorTask@j
+   731  009F                     l875:
+   732                           
+   733                           ;./system.h: 116:     }
+   734  009F  3001               	movlw	1
+   735  00A0  07B1               	addwf	MotorTask@i_123,f
+   736  00A1  1803               	skipnc
+   737  00A2  0AB2               	incf	MotorTask@i_123+1,f
+   738  00A3  3000               	movlw	0
+   739  00A4  07B2               	addwf	MotorTask@i_123+1,f
+   740  00A5                     l877:
+   741  00A5  3000               	movlw	0
+   742  00A6  0232               	subwf	MotorTask@i_123+1,w
+   743  00A7  3030               	movlw	48
+   744  00A8  1903               	skipnz
+   745  00A9  0231               	subwf	MotorTask@i_123,w
+   746  00AA  1C03               	skipc
+   747  00AB  28AD               	goto	u211
+   748  00AC  28AE               	goto	u210
+   749  00AD                     u211:
+   750  00AD  2878               	goto	l865
+   751  00AE                     u210:
+   752  00AE                     l879:
+   753                           
+   754                           ;./system.h: 117:     _delay((unsigned long)((1000)*(4000000/4000.0)));
+   755  00AE  3006               	movlw	6
+   756  00AF  1283               	bcf	3,5	;RP0=0, select bank0
+   757  00B0  1303               	bcf	3,6	;RP1=0, select bank0
+   758  00B1  00AE               	movwf	??_MotorTask+2
+   759  00B2  3013               	movlw	19
+   760  00B3  00AD               	movwf	??_MotorTask+1
+   761  00B4  30AD               	movlw	173
+   762  00B5  00AC               	movwf	??_MotorTask
+   763  00B6                     u347:
+   764  00B6  0BAC               	decfsz	??_MotorTask,f
+   765  00B7  28B6               	goto	u347
+   766  00B8  0BAD               	decfsz	??_MotorTask+1,f
+   767  00B9  28B6               	goto	u347
+   768  00BA  0BAE               	decfsz	??_MotorTask+2,f
+   769  00BB  28B6               	goto	u347
+   770  00BC                     l881:
+   771                           
+   772                           ;./system.h: 118:     resetMotor();
+   773  00BC  120A  118A  2203  120A  118A  	fcall	_resetMotor
+   774  00C1                     l47:
+   775  00C1  0008               	return
+   776  00C2                     __end_of_MotorTask:
+   777                           
+   778                           	psect	text2
+   779  0203                     __ptext2:	
+   780 ;; *************** function _resetMotor *****************
+   781 ;; Defined at:
+   782 ;;		line 90 in file "./system.h"
+   783 ;; Parameters:    Size  Location     Type
+   784 ;;		None
+   785 ;; Auto vars:     Size  Location     Type
+   786 ;;		None
+   787 ;; Return value:  Size  Location     Type
+   788 ;;                  1    wreg      void 
+   789 ;; Registers used:
+   790 ;;		status,2
+   791 ;; Tracked objects:
+   792 ;;		On entry : 0/0
+   793 ;;		On exit  : 0/0
+   794 ;;		Unchanged: 0/0
+   795 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   796 ;;      Params:         0       0       0       0       0
+   797 ;;      Locals:         0       0       0       0       0
+   798 ;;      Temps:          0       0       0       0       0
+   799 ;;      Totals:         0       0       0       0       0
+   800 ;;Total ram usage:        0 bytes
+   801 ;; Hardware stack levels used:    1
+   802 ;; Hardware stack levels required when called:    3
+   803 ;; This function calls:
+   804 ;;		Nothing
+   805 ;; This function is called by:
+   806 ;;		_MotorTask
+   807 ;; This function uses a non-reentrant model
+   808 ;;
+   809                           
+   810                           
+   811                           ;psect for function _resetMotor
+   812  0203                     _resetMotor:
+   813  0203                     l821:	
+   814                           ;incstack = 0
+   815                           ; Regs used in _resetMotor: [status,2]
+   816                           
+   817                           
+   818                           ;./system.h: 91:     PORTC = 0x00;
+   819  0203  1283               	bcf	3,5	;RP0=0, select bank0
+   820  0204  1303               	bcf	3,6	;RP1=0, select bank0
+   821  0205  0187               	clrf	7	;volatile
+   822  0206                     l36:
+   823  0206  0008               	return
+   824  0207                     __end_of_resetMotor:
+   825                           
+   826                           	psect	text3
+   827  01F7                     __ptext3:	
+   828 ;; *************** function _initMotorTask *****************
+   829 ;; Defined at:
+   830 ;;		line 85 in file "./system.h"
+   831 ;; Parameters:    Size  Location     Type
+   832 ;;		None
+   833 ;; Auto vars:     Size  Location     Type
+   834 ;;		None
+   835 ;; Return value:  Size  Location     Type
+   836 ;;                  1    wreg      void 
+   837 ;; Registers used:
+   838 ;;		status,2
+   839 ;; Tracked objects:
+   840 ;;		On entry : 0/0
+   841 ;;		On exit  : 0/0
+   842 ;;		Unchanged: 0/0
+   843 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   844 ;;      Params:         0       0       0       0       0
+   845 ;;      Locals:         0       0       0       0       0
+   846 ;;      Temps:          0       0       0       0       0
+   847 ;;      Totals:         0       0       0       0       0
+   848 ;;Total ram usage:        0 bytes
+   849 ;; Hardware stack levels used:    1
+   850 ;; Hardware stack levels required when called:    3
+   851 ;; This function calls:
+   852 ;;		Nothing
+   853 ;; This function is called by:
+   854 ;;		_MotorTask
+   855 ;; This function uses a non-reentrant model
+   856 ;;
+   857                           
+   858                           
+   859                           ;psect for function _initMotorTask
+   860  01F7                     _initMotorTask:
+   861  01F7                     l819:	
+   862                           ;incstack = 0
+   863                           ; Regs used in _initMotorTask: [status,2]
+   864                           
+   865                           
+   866                           ;./system.h: 86:     TRISC = 0x00;
+   867  01F7  1683               	bsf	3,5	;RP0=1, select bank1
+   868  01F8  1303               	bcf	3,6	;RP1=0, select bank1
+   869  01F9  0187               	clrf	7	;volatile
+   870                           
+   871                           ;./system.h: 87:     PORTC = 0x00;
+   872  01FA  1283               	bcf	3,5	;RP0=0, select bank0
+   873  01FB  1303               	bcf	3,6	;RP1=0, select bank0
+   874  01FC  0187               	clrf	7	;volatile
+   875  01FD                     l33:
+   876  01FD  0008               	return
+   877  01FE                     __end_of_initMotorTask:
+   878                           
+   879                           	psect	text4
+   880  0113                     __ptext4:	
+   881 ;; *************** function _LampTask *****************
+   882 ;; Defined at:
+   883 ;;		line 138 in file "./system.h"
+   884 ;; Parameters:    Size  Location     Type
+   885 ;;		None
+   886 ;; Auto vars:     Size  Location     Type
+   887 ;;  i               2   15[BANK0 ] int 
+   888 ;; Return value:  Size  Location     Type
+   889 ;;                  1    wreg      void 
+   890 ;; Registers used:
+   891 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   892 ;; Tracked objects:
+   893 ;;		On entry : 0/0
+   894 ;;		On exit  : 0/0
+   895 ;;		Unchanged: 0/0
+   896 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   897 ;;      Params:         0       0       0       0       0
+   898 ;;      Locals:         0       2       0       0       0
+   899 ;;      Temps:          0       3       0       0       0
+   900 ;;      Totals:         0       5       0       0       0
+   901 ;;Total ram usage:        5 bytes
+   902 ;; Hardware stack levels used:    1
+   903 ;; Hardware stack levels required when called:    4
+   904 ;; This function calls:
+   905 ;;		_initLampTask
+   906 ;;		_resetLamp
+   907 ;; This function is called by:
+   908 ;;		_main
+   909 ;; This function uses a non-reentrant model
+   910 ;;
+   911                           
+   912                           
+   913                           ;psect for function _LampTask
+   914  0113                     _LampTask:
+   915  0113                     l885:	
+   916                           ;incstack = 0
+   917                           ; Regs used in _LampTask: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   918                           
+   919                           
+   920                           ;./system.h: 139:     initLampTask();
+   921  0113  120A  118A  21DE  120A  118A  	fcall	_initLampTask
+   922  0118                     l887:
+   923                           
+   924                           ;./system.h: 140:     for (int i=0; i<3; i++) {
+   925  0118  1283               	bcf	3,5	;RP0=0, select bank0
+   926  0119  1303               	bcf	3,6	;RP1=0, select bank0
+   927  011A  01AF               	clrf	LampTask@i
+   928  011B  01B0               	clrf	LampTask@i+1
+   929  011C                     l56:
+   930                           
+   931                           ;./system.h: 141:         if(PORTBbits.RB1){
+   932  011C  1283               	bcf	3,5	;RP0=0, select bank0
+   933  011D  1303               	bcf	3,6	;RP1=0, select bank0
+   934  011E  1C86               	btfss	6,1	;volatile
+   935  011F  2921               	goto	u221
+   936  0120  2922               	goto	u220
+   937  0121                     u221:
+   938  0121  2942               	goto	l58
+   939  0122                     u220:
+   940  0122                     l893:
+   941                           
+   942                           ;./system.h: 142:             PORTBbits.RB2 = 1;
+   943  0122  1506               	bsf	6,2	;volatile
+   944  0123                     l895:
+   945                           
+   946                           ;./system.h: 143:         _delay((unsigned long)((500)*(4000000/4000.0)));
+   947  0123  3003               	movlw	3
+   948  0124  1283               	bcf	3,5	;RP0=0, select bank0
+   949  0125  1303               	bcf	3,6	;RP1=0, select bank0
+   950  0126  00AE               	movwf	??_LampTask+2
+   951  0127  308A               	movlw	138
+   952  0128  00AD               	movwf	??_LampTask+1
+   953  0129  3055               	movlw	85
+   954  012A  00AC               	movwf	??_LampTask
+   955  012B                     u357:
+   956  012B  0BAC               	decfsz	??_LampTask,f
+   957  012C  292B               	goto	u357
+   958  012D  0BAD               	decfsz	??_LampTask+1,f
+   959  012E  292B               	goto	u357
+   960  012F  0BAE               	decfsz	??_LampTask+2,f
+   961  0130  292B               	goto	u357
+   962  0131                     l897:
+   963                           
+   964                           ;./system.h: 144:         PORTBbits.RB2 = 0;
+   965  0131  1283               	bcf	3,5	;RP0=0, select bank0
+   966  0132  1303               	bcf	3,6	;RP1=0, select bank0
+   967  0133  1106               	bcf	6,2	;volatile
+   968                           
+   969                           ;./system.h: 145:         _delay((unsigned long)((500)*(4000000/4000.0)));
+   970  0134  3003               	movlw	3
+   971  0135  1283               	bcf	3,5	;RP0=0, select bank0
+   972  0136  1303               	bcf	3,6	;RP1=0, select bank0
+   973  0137  00AE               	movwf	??_LampTask+2
+   974  0138  308A               	movlw	138
+   975  0139  00AD               	movwf	??_LampTask+1
+   976  013A  3055               	movlw	85
+   977  013B  00AC               	movwf	??_LampTask
+   978  013C                     u367:
+   979  013C  0BAC               	decfsz	??_LampTask,f
+   980  013D  293C               	goto	u367
+   981  013E  0BAD               	decfsz	??_LampTask+1,f
+   982  013F  293C               	goto	u367
+   983  0140  0BAE               	decfsz	??_LampTask+2,f
+   984  0141  293C               	goto	u367
+   985  0142                     l58:	
+   986                           ;./system.h: 146:         }
+   987                           
+   988                           
+   989                           ;./system.h: 147:     }
+   990  0142  3001               	movlw	1
+   991  0143  1283               	bcf	3,5	;RP0=0, select bank0
+   992  0144  1303               	bcf	3,6	;RP1=0, select bank0
+   993  0145  07AF               	addwf	LampTask@i,f
+   994  0146  1803               	skipnc
+   995  0147  0AB0               	incf	LampTask@i+1,f
+   996  0148  3000               	movlw	0
+   997  0149  07B0               	addwf	LampTask@i+1,f
+   998  014A                     l899:
+   999  014A  0830               	movf	LampTask@i+1,w
+  1000  014B  3A80               	xorlw	128
+  1001  014C  00FF               	movwf	btemp+1
+  1002  014D  3080               	movlw	128
+  1003  014E  027F               	subwf	btemp+1,w
+  1004  014F  1D03               	skipz
+  1005  0150  2953               	goto	u235
+  1006  0151  3003               	movlw	3
+  1007  0152  022F               	subwf	LampTask@i,w
+  1008  0153                     u235:
+  1009  0153  1C03               	skipc
+  1010  0154  2956               	goto	u231
+  1011  0155  2957               	goto	u230
+  1012  0156                     u231:
+  1013  0156  291C               	goto	l56
+  1014  0157                     u230:
+  1015  0157                     l901:
+  1016                           
+  1017                           ;./system.h: 148:     resetLamp();
+  1018  0157  120A  118A  21FE  120A  118A  	fcall	_resetLamp
+  1019  015C                     l59:
+  1020  015C  0008               	return
+  1021  015D                     __end_of_LampTask:
+  1022                           
+  1023                           	psect	text5
+  1024  01FE                     __ptext5:	
+  1025 ;; *************** function _resetLamp *****************
+  1026 ;; Defined at:
+  1027 ;;		line 132 in file "./system.h"
+  1028 ;; Parameters:    Size  Location     Type
+  1029 ;;		None
+  1030 ;; Auto vars:     Size  Location     Type
+  1031 ;;		None
+  1032 ;; Return value:  Size  Location     Type
+  1033 ;;                  1    wreg      void 
+  1034 ;; Registers used:
+  1035 ;;		None
+  1036 ;; Tracked objects:
+  1037 ;;		On entry : 0/0
+  1038 ;;		On exit  : 0/0
+  1039 ;;		Unchanged: 0/0
+  1040 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1041 ;;      Params:         0       0       0       0       0
+  1042 ;;      Locals:         0       0       0       0       0
+  1043 ;;      Temps:          0       0       0       0       0
+  1044 ;;      Totals:         0       0       0       0       0
+  1045 ;;Total ram usage:        0 bytes
+  1046 ;; Hardware stack levels used:    1
+  1047 ;; Hardware stack levels required when called:    3
+  1048 ;; This function calls:
+  1049 ;;		Nothing
+  1050 ;; This function is called by:
+  1051 ;;		_LampTask
+  1052 ;; This function uses a non-reentrant model
+  1053 ;;
+  1054                           
+  1055                           
+  1056                           ;psect for function _resetLamp
+  1057  01FE                     _resetLamp:
+  1058  01FE                     l825:	
+  1059                           ;incstack = 0
+  1060                           ; Regs used in _resetLamp: []
+  1061                           
+  1062                           
+  1063                           ;./system.h: 133:     PORTBbits.RB2 = 0;
+  1064  01FE  1283               	bcf	3,5	;RP0=0, select bank0
+  1065  01FF  1303               	bcf	3,6	;RP1=0, select bank0
+  1066  0200  1106               	bcf	6,2	;volatile
+  1067                           
+  1068                           ;./system.h: 134:     INTCONbits.TMR0IE = 0;
+  1069  0201  128B               	bcf	11,5	;volatile
+  1070  0202                     l53:
+  1071  0202  0008               	return
+  1072  0203                     __end_of_resetLamp:
+  1073                           
+  1074                           	psect	text6
+  1075  01DE                     __ptext6:	
+  1076 ;; *************** function _initLampTask *****************
+  1077 ;; Defined at:
+  1078 ;;		line 123 in file "./system.h"
+  1079 ;; Parameters:    Size  Location     Type
+  1080 ;;		None
+  1081 ;; Auto vars:     Size  Location     Type
+  1082 ;;		None
+  1083 ;; Return value:  Size  Location     Type
+  1084 ;;                  1    wreg      void 
+  1085 ;; Registers used:
+  1086 ;;		None
+  1087 ;; Tracked objects:
+  1088 ;;		On entry : 0/0
+  1089 ;;		On exit  : 0/0
+  1090 ;;		Unchanged: 0/0
+  1091 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1092 ;;      Params:         0       0       0       0       0
+  1093 ;;      Locals:         0       0       0       0       0
+  1094 ;;      Temps:          0       0       0       0       0
+  1095 ;;      Totals:         0       0       0       0       0
+  1096 ;;Total ram usage:        0 bytes
+  1097 ;; Hardware stack levels used:    1
+  1098 ;; Hardware stack levels required when called:    3
+  1099 ;; This function calls:
+  1100 ;;		Nothing
+  1101 ;; This function is called by:
+  1102 ;;		_LampTask
+  1103 ;; This function uses a non-reentrant model
+  1104 ;;
+  1105                           
+  1106                           
+  1107                           ;psect for function _initLampTask
+  1108  01DE                     _initLampTask:
+  1109  01DE                     l823:	
+  1110                           ;incstack = 0
+  1111                           ; Regs used in _initLampTask: []
+  1112                           
+  1113                           
+  1114                           ;./system.h: 126:     TRISBbits.TRISB1 = 1;
+  1115  01DE  1683               	bsf	3,5	;RP0=1, select bank1
+  1116  01DF  1303               	bcf	3,6	;RP1=0, select bank1
+  1117  01E0  1486               	bsf	6,1	;volatile
+  1118                           
+  1119                           ;./system.h: 127:     TRISBbits.TRISB2 = 0;
+  1120  01E1  1106               	bcf	6,2	;volatile
+  1121                           
+  1122                           ;./system.h: 128:     PORTBbits.RB1 = 0;
+  1123  01E2  1283               	bcf	3,5	;RP0=0, select bank0
+  1124  01E3  1303               	bcf	3,6	;RP1=0, select bank0
+  1125  01E4  1086               	bcf	6,1	;volatile
+  1126                           
+  1127                           ;./system.h: 129:     PORTBbits.RB2 = 0;
+  1128  01E5  1106               	bcf	6,2	;volatile
+  1129  01E6                     l50:
+  1130  01E6  0008               	return
+  1131  01E7                     __end_of_initLampTask:
+  1132                           
+  1133                           	psect	text7
+  1134  015D                     __ptext7:	
+  1135 ;; *************** function _SwitchPress *****************
+  1136 ;; Defined at:
+  1137 ;;		line 14 in file "main.c"
+  1138 ;; Parameters:    Size  Location     Type
+  1139 ;;		None
+  1140 ;; Auto vars:     Size  Location     Type
+  1141 ;;		None
+  1142 ;; Return value:  Size  Location     Type
+  1143 ;;                  1    wreg      void 
+  1144 ;; Registers used:
+  1145 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1146 ;; Tracked objects:
+  1147 ;;		On entry : 0/0
+  1148 ;;		On exit  : 0/0
+  1149 ;;		Unchanged: 0/0
+  1150 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1151 ;;      Params:         0       0       0       0       0
+  1152 ;;      Locals:         0       0       0       0       0
+  1153 ;;      Temps:          4       0       0       0       0
+  1154 ;;      Totals:         4       0       0       0       0
+  1155 ;;Total ram usage:        4 bytes
+  1156 ;; Hardware stack levels used:    1
+  1157 ;; Hardware stack levels required when called:    2
+  1158 ;; This function calls:
+  1159 ;;		_CounterTask
+  1160 ;; This function is called by:
+  1161 ;;		Interrupt level 1
+  1162 ;; This function uses a non-reentrant model
+  1163 ;;
+  1164                           
+  1165                           
+  1166                           ;psect for function _SwitchPress
+  1167  015D                     _SwitchPress:
+  1168  015D                     i1l923:
+  1169                           
+  1170                           ;main.c: 16:     if (INTCONbits.INTF) {
+  1171  015D  1C8B               	btfss	11,1	;volatile
+  1172  015E  2960               	goto	u26_21
+  1173  015F  2961               	goto	u26_20
+  1174  0160                     u26_21:
+  1175  0160  2971               	goto	i1l933
+  1176  0161                     u26_20:
+  1177  0161                     i1l925:
+  1178                           
+  1179                           ;main.c: 17:         PORTBbits.RB3 = 1;
+  1180  0161  1283               	bcf	3,5	;RP0=0, select bank0
+  1181  0162  1303               	bcf	3,6	;RP1=0, select bank0
+  1182  0163  1586               	bsf	6,3	;volatile
+  1183  0164                     i1l927:
+  1184                           
+  1185                           ;main.c: 18:         CounterTask(3);
+  1186  0164  3003               	movlw	3
+  1187  0165  00F0               	movwf	CounterTask@maxCount
+  1188  0166  3000               	movlw	0
+  1189  0167  00F1               	movwf	CounterTask@maxCount+1
+  1190  0168  120A  118A  20C2  120A  118A  	fcall	_CounterTask
+  1191  016D                     i1l929:
+  1192                           
+  1193                           ;main.c: 19:         PORTBbits.RB3 = 0;
+  1194  016D  1283               	bcf	3,5	;RP0=0, select bank0
+  1195  016E  1303               	bcf	3,6	;RP1=0, select bank0
+  1196  016F  1186               	bcf	6,3	;volatile
+  1197  0170                     i1l931:
+  1198                           
+  1199                           ;main.c: 20:         INTCONbits.INTF = 0;
+  1200  0170  108B               	bcf	11,1	;volatile
+  1201  0171                     i1l933:
+  1202                           
+  1203                           ;main.c: 22:     if (TMR1IF) {
+  1204  0171  1283               	bcf	3,5	;RP0=0, select bank0
+  1205  0172  1303               	bcf	3,6	;RP1=0, select bank0
+  1206  0173  1C0C               	btfss	12,0	;volatile
+  1207  0174  2976               	goto	u27_21
+  1208  0175  2977               	goto	u27_20
+  1209  0176                     u27_21:
+  1210  0176  2994               	goto	i1l85
+  1211  0177                     u27_20:
+  1212  0177                     i1l935:
+  1213                           
+  1214                           ;main.c: 23:         TMR1 = 15536;
+  1215  0177  303C               	movlw	60
+  1216  0178  008F               	movwf	15	;volatile
+  1217  0179  30B0               	movlw	176
+  1218  017A  008E               	movwf	14	;volatile
+  1219  017B                     i1l937:
+  1220                           
+  1221                           ;main.c: 24:         counter++;
+  1222  017B  3001               	movlw	1
+  1223  017C  00F6               	movwf	??_SwitchPress
+  1224  017D  0876               	movf	??_SwitchPress,w
+  1225  017E  07FA               	addwf	_counter,f
+  1226  017F                     i1l939:
+  1227                           
+  1228                           ;main.c: 25:         if (counter == nResets) {
+  1229  017F  087A               	movf	_counter,w
+  1230  0180  067B               	xorwf	_nResets,w
+  1231  0181  1D03               	skipz
+  1232  0182  2984               	goto	u28_21
+  1233  0183  2985               	goto	u28_20
+  1234  0184                     u28_21:
+  1235  0184  2993               	goto	i1l945
+  1236  0185                     u28_20:
+  1237  0185                     i1l941:
+  1238                           
+  1239                           ;main.c: 26:             PORTBbits.RB3 = ~PORTBbits.RB3;
+  1240  0185  1003               	clrc
+  1241  0186  1D86               	btfss	6,3	;volatile
+  1242  0187  1403               	setc
+  1243  0188  1803               	btfsc	3,0
+  1244  0189  298B               	goto	u29_21
+  1245  018A  298F               	goto	u29_20
+  1246  018B                     u29_21:
+  1247  018B  1283               	bcf	3,5	;RP0=0, select bank0
+  1248  018C  1303               	bcf	3,6	;RP1=0, select bank0
+  1249  018D  1586               	bsf	6,3	;volatile
+  1250  018E  2992               	goto	u30_24
+  1251  018F                     u29_20:
+  1252  018F  1283               	bcf	3,5	;RP0=0, select bank0
+  1253  0190  1303               	bcf	3,6	;RP1=0, select bank0
+  1254  0191  1186               	bcf	6,3	;volatile
+  1255  0192                     u30_24:
+  1256  0192                     i1l943:
+  1257                           
+  1258                           ;main.c: 27:             counter = 0;
+  1259  0192  01FA               	clrf	_counter
+  1260  0193                     i1l945:
+  1261                           
+  1262                           ;main.c: 30:         TMR1IF = 0;
+  1263  0193  100C               	bcf	12,0	;volatile
+  1264  0194                     i1l85:
+  1265  0194  0879               	movf	??_SwitchPress+3,w
+  1266  0195  008A               	movwf	10
+  1267  0196  0878               	movf	??_SwitchPress+2,w
+  1268  0197  0084               	movwf	4
+  1269  0198  0E77               	swapf	??_SwitchPress+1,w
+  1270  0199  0083               	movwf	3
+  1271  019A  0EFE               	swapf	btemp,f
+  1272  019B  0E7E               	swapf	btemp,w
+  1273  019C  0009               	retfie
+  1274  019D                     __end_of_SwitchPress:
+  1275                           
+  1276                           	psect	intentry
+  1277  0004                     __pintentry:	
+  1278                           ;incstack = 0
+  1279                           ; Regs used in _SwitchPress: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1280                           
+  1281  0004                     interrupt_function:
+  1282  007E                     saved_w	set	btemp
+  1283  0004  00FE               	movwf	btemp
+  1284  0005  0E03               	swapf	3,w
+  1285  0006  00F7               	movwf	??_SwitchPress+1
+  1286  0007  0804               	movf	4,w
+  1287  0008  00F8               	movwf	??_SwitchPress+2
+  1288  0009  080A               	movf	10,w
+  1289  000A  00F9               	movwf	??_SwitchPress+3
+  1290  000B  120A  118A  295D   	ljmp	_SwitchPress
+  1291                           
+  1292                           	psect	text8
+  1293  00C2                     __ptext8:	
+  1294 ;; *************** function _CounterTask *****************
+  1295 ;; Defined at:
+  1296 ;;		line 162 in file "./system.h"
+  1297 ;; Parameters:    Size  Location     Type
+  1298 ;;  maxCount        2    0[COMMON] int 
+  1299 ;; Auto vars:     Size  Location     Type
+  1300 ;;  i               2   10[BANK0 ] int 
+  1301 ;;  segmentCode    10    0[BANK0 ] unsigned char [10]
+  1302 ;; Return value:  Size  Location     Type
+  1303 ;;                  1    wreg      void 
+  1304 ;; Registers used:
+  1305 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1306 ;; Tracked objects:
+  1307 ;;		On entry : 0/0
+  1308 ;;		On exit  : 0/0
+  1309 ;;		Unchanged: 0/0
+  1310 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1311 ;;      Params:         2       0       0       0       0
+  1312 ;;      Locals:         0      12       0       0       0
+  1313 ;;      Temps:          4       0       0       0       0
+  1314 ;;      Totals:         6      12       0       0       0
+  1315 ;;Total ram usage:       18 bytes
+  1316 ;; Hardware stack levels used:    1
+  1317 ;; Hardware stack levels required when called:    1
+  1318 ;; This function calls:
+  1319 ;;		_initCounterTask
+  1320 ;;		_resetCounter
+  1321 ;; This function is called by:
+  1322 ;;		_SwitchPress
+  1323 ;; This function uses a non-reentrant model
+  1324 ;;
+  1325                           
+  1326                           
+  1327                           ;psect for function _CounterTask
+  1328  00C2                     _CounterTask:
+  1329  00C2                     i1l905:	
+  1330                           ;incstack = 0
+  1331                           ; Regs used in _CounterTask: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1332                           
+  1333                           
+  1334                           ;./system.h: 163:     initCounterTask();
+  1335  00C2  120A  118A  21EF  120A  118A  	fcall	_initCounterTask
+  1336  00C7                     i1l907:
+  1337                           
+  1338                           ;./system.h: 164:     unsigned char segmentCode[] = {
+  1339  00C7  3020               	movlw	CounterTask@segmentCode& (0+255)
+  1340  00C8  0084               	movwf	4
+  1341  00C9  3034               	movlw	low CounterTask@F874
+  1342  00CA  00F2               	movwf	??_CounterTask
+  1343  00CB  0804               	movf	4,w
+  1344  00CC  00F3               	movwf	??_CounterTask+1
+  1345  00CD  300A               	movlw	10
+  1346  00CE  00F4               	movwf	??_CounterTask+2
+  1347  00CF                     u24_20:
+  1348  00CF  0872               	movf	??_CounterTask,w
+  1349  00D0  0084               	movwf	4
+  1350  00D1  1383               	bcf	3,7	;select IRP bank0
+  1351  00D2  0800               	movf	0,w
+  1352  00D3  00F5               	movwf	??_CounterTask+3
+  1353  00D4  0AF2               	incf	??_CounterTask,f
+  1354  00D5  0873               	movf	??_CounterTask+1,w
+  1355  00D6  0084               	movwf	4
+  1356  00D7  0875               	movf	??_CounterTask+3,w
+  1357  00D8  0080               	movwf	0
+  1358  00D9  0AF3               	incf	??_CounterTask+1,f
+  1359  00DA  0BF4               	decfsz	??_CounterTask+2,f
+  1360  00DB  28CF               	goto	u24_20
+  1361  00DC                     i1l909:
+  1362                           
+  1363                           ;./system.h: 170:     for(int i=0; i<maxCount; i++) {
+  1364  00DC  1283               	bcf	3,5	;RP0=0, select bank0
+  1365  00DD  1303               	bcf	3,6	;RP1=0, select bank0
+  1366  00DE  01AA               	clrf	CounterTask@i
+  1367  00DF  01AB               	clrf	CounterTask@i+1
+  1368  00E0  28FF               	goto	i1l917
+  1369  00E1                     i1l911:
+  1370                           
+  1371                           ;./system.h: 171:         PORTD = segmentCode[i+1];
+  1372  00E1  1283               	bcf	3,5	;RP0=0, select bank0
+  1373  00E2  1303               	bcf	3,6	;RP1=0, select bank0
+  1374  00E3  082A               	movf	CounterTask@i,w
+  1375  00E4  3E01               	addlw	1
+  1376  00E5  3E20               	addlw	(low (CounterTask@segmentCode| 0))& (0+255)
+  1377  00E6  0084               	movwf	4
+  1378  00E7  1383               	bcf	3,7	;select IRP bank0
+  1379  00E8  0800               	movf	0,w
+  1380  00E9  0088               	movwf	8	;volatile
+  1381  00EA                     i1l913:
+  1382                           
+  1383                           ;./system.h: 172:         _delay((unsigned long)((1000)*(4000000/4000.0)));
+  1384  00EA  3006               	movlw	6
+  1385  00EB  00F4               	movwf	??_CounterTask+2
+  1386  00EC  3013               	movlw	19
+  1387  00ED  00F3               	movwf	??_CounterTask+1
+  1388  00EE  30AD               	movlw	173
+  1389  00EF  00F2               	movwf	??_CounterTask
+  1390  00F0                     u37_27:
+  1391  00F0  0BF2               	decfsz	??_CounterTask,f
+  1392  00F1  28F0               	goto	u37_27
+  1393  00F2  0BF3               	decfsz	??_CounterTask+1,f
+  1394  00F3  28F0               	goto	u37_27
+  1395  00F4  0BF4               	decfsz	??_CounterTask+2,f
+  1396  00F5  28F0               	goto	u37_27
+  1397  00F6  28F7               	nop2
+  1398  00F7                     i1l915:
+  1399                           
+  1400                           ;./system.h: 173:     }
+  1401  00F7  3001               	movlw	1
+  1402  00F8  1283               	bcf	3,5	;RP0=0, select bank0
+  1403  00F9  1303               	bcf	3,6	;RP1=0, select bank0
+  1404  00FA  07AA               	addwf	CounterTask@i,f
+  1405  00FB  1803               	skipnc
+  1406  00FC  0AAB               	incf	CounterTask@i+1,f
+  1407  00FD  3000               	movlw	0
+  1408  00FE  07AB               	addwf	CounterTask@i+1,f
+  1409  00FF                     i1l917:
+  1410  00FF  082B               	movf	CounterTask@i+1,w
+  1411  0100  3A80               	xorlw	128
+  1412  0101  00F2               	movwf	??_CounterTask
+  1413  0102  0871               	movf	CounterTask@maxCount+1,w
+  1414  0103  3A80               	xorlw	128
+  1415  0104  0272               	subwf	??_CounterTask,w
+  1416  0105  1D03               	skipz
+  1417  0106  2909               	goto	u25_25
+  1418  0107  0870               	movf	CounterTask@maxCount,w
+  1419  0108  022A               	subwf	CounterTask@i,w
+  1420  0109                     u25_25:
+  1421  0109  1C03               	skipc
+  1422  010A  290C               	goto	u25_21
+  1423  010B  290D               	goto	u25_20
+  1424  010C                     u25_21:
+  1425  010C  28E1               	goto	i1l911
+  1426  010D                     u25_20:
+  1427  010D                     i1l919:
+  1428                           
+  1429                           ;./system.h: 174:     resetCounter();
+  1430  010D  120A  118A  2207  120A  118A  	fcall	_resetCounter
+  1431  0112                     i1l73:
+  1432  0112  0008               	return
+  1433  0113                     __end_of_CounterTask:
+  1434                           
+  1435                           	psect	text9
+  1436  0207                     __ptext9:	
+  1437 ;; *************** function _resetCounter *****************
+  1438 ;; Defined at:
+  1439 ;;		line 158 in file "./system.h"
+  1440 ;; Parameters:    Size  Location     Type
+  1441 ;;		None
+  1442 ;; Auto vars:     Size  Location     Type
+  1443 ;;		None
+  1444 ;; Return value:  Size  Location     Type
+  1445 ;;                  1    wreg      void 
+  1446 ;; Registers used:
+  1447 ;;		status,2
+  1448 ;; Tracked objects:
+  1449 ;;		On entry : 0/0
+  1450 ;;		On exit  : 0/0
+  1451 ;;		Unchanged: 0/0
+  1452 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1453 ;;      Params:         0       0       0       0       0
+  1454 ;;      Locals:         0       0       0       0       0
+  1455 ;;      Temps:          0       0       0       0       0
+  1456 ;;      Totals:         0       0       0       0       0
+  1457 ;;Total ram usage:        0 bytes
+  1458 ;; Hardware stack levels used:    1
+  1459 ;; This function calls:
+  1460 ;;		Nothing
+  1461 ;; This function is called by:
+  1462 ;;		_CounterTask
+  1463 ;; This function uses a non-reentrant model
+  1464 ;;
+  1465                           
+  1466                           
+  1467                           ;psect for function _resetCounter
+  1468  0207                     _resetCounter:
+  1469  0207                     i1l831:	
+  1470                           ;incstack = 0
+  1471                           ; Regs used in _resetCounter: [status,2]
+  1472                           
+  1473                           
+  1474                           ;./system.h: 159:     PORTD = 0x00;
+  1475  0207  1283               	bcf	3,5	;RP0=0, select bank0
+  1476  0208  1303               	bcf	3,6	;RP1=0, select bank0
+  1477  0209  0188               	clrf	8	;volatile
+  1478  020A                     i1l65:
+  1479  020A  0008               	return
+  1480  020B                     __end_of_resetCounter:
+  1481                           
+  1482                           	psect	text10
+  1483  01EF                     __ptext10:	
+  1484 ;; *************** function _initCounterTask *****************
+  1485 ;; Defined at:
+  1486 ;;		line 153 in file "./system.h"
+  1487 ;; Parameters:    Size  Location     Type
+  1488 ;;		None
+  1489 ;; Auto vars:     Size  Location     Type
+  1490 ;;		None
+  1491 ;; Return value:  Size  Location     Type
+  1492 ;;                  1    wreg      void 
+  1493 ;; Registers used:
+  1494 ;;		wreg, status,2
+  1495 ;; Tracked objects:
+  1496 ;;		On entry : 0/0
+  1497 ;;		On exit  : 0/0
+  1498 ;;		Unchanged: 0/0
+  1499 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1500 ;;      Params:         0       0       0       0       0
+  1501 ;;      Locals:         0       0       0       0       0
+  1502 ;;      Temps:          0       0       0       0       0
+  1503 ;;      Totals:         0       0       0       0       0
+  1504 ;;Total ram usage:        0 bytes
+  1505 ;; Hardware stack levels used:    1
+  1506 ;; This function calls:
+  1507 ;;		Nothing
+  1508 ;; This function is called by:
+  1509 ;;		_CounterTask
+  1510 ;; This function uses a non-reentrant model
+  1511 ;;
+  1512                           
+  1513                           
+  1514                           ;psect for function _initCounterTask
+  1515  01EF                     _initCounterTask:
+  1516  01EF                     i1l827:	
+  1517                           ;incstack = 0
+  1518                           ; Regs used in _initCounterTask: [wreg+status,2]
+  1519                           
+  1520                           
+  1521                           ;./system.h: 154:     TRISD = 0x00;
+  1522  01EF  1683               	bsf	3,5	;RP0=1, select bank1
+  1523  01F0  1303               	bcf	3,6	;RP1=0, select bank1
+  1524  01F1  0188               	clrf	8	;volatile
+  1525  01F2                     i1l829:
+  1526                           
+  1527                           ;./system.h: 155:     PORTD = 0x3F;
+  1528  01F2  303F               	movlw	63
+  1529  01F3  1283               	bcf	3,5	;RP0=0, select bank0
+  1530  01F4  1303               	bcf	3,6	;RP1=0, select bank0
+  1531  01F5  0088               	movwf	8	;volatile
+  1532  01F6                     i1l62:
+  1533  01F6  0008               	return
+  1534  01F7                     __end_of_initCounterTask:
+  1535  007E                     btemp	set	126	;btemp
+  1536  007E                     wtemp0	set	126
+  1537                           
+  1538                           	psect	config
+  1539                           
+  1540                           ;Config register CONFIG @ 0x2007
+  1541                           ;	Oscillator Selection bits
+  1542                           ;	FOSC = EXTRC, RC oscillator
+  1543                           ;	Watchdog Timer Enable bit
+  1544                           ;	WDTE = OFF, WDT disabled
+  1545                           ;	Power-up Timer Enable bit
+  1546                           ;	PWRTE = ON, PWRT enabled
+  1547                           ;	Brown-out Reset Enable bit
+  1548                           ;	BOREN = ON, BOR enabled
+  1549                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+  1550                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
+  1551                           ;	Data EEPROM Memory Code Protection bit
+  1552                           ;	CPD = OFF, Data EEPROM code protection off
+  1553                           ;	Flash Program Memory Write Enable bits
+  1554                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+  1555                           ;	In-Circuit Debugger Mode bit
+  1556                           ;	DEBUG = 0x1, unprogrammed default
+  1557                           ;	Flash Program Memory Code Protection bit
+  1558                           ;	CP = OFF, Code protection off
+  1559  2007                     	org	8199
+  1560  2007  3F73               	dw	16243
+
+Data Sizes:
+    Strings     0
+    Constant    2
+    Data        11
+    BSS         1
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     10      12
+    BANK0            80     20      30
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _SwitchPress in COMMON
+
+    _SwitchPress->_CounterTask
+
+Critical Paths under _main in BANK0
+
+    _main->_MotorTask
+
+Critical Paths under _SwitchPress in BANK0
+
+    _SwitchPress->_CounterTask
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _SwitchPress in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _SwitchPress in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _SwitchPress in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     232
+                           _LampTask
+                          _MotorTask
+ ---------------------------------------------------------------------------------
+ (1) _MotorTask                                            8     8      0     186
+                                             12 BANK0      8     8      0
+                      _initMotorTask
+                         _resetMotor
+ ---------------------------------------------------------------------------------
+ (2) _resetMotor                                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _initMotorTask                                        0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _LampTask                                             5     5      0      46
+                                             12 BANK0      5     5      0
+                       _initLampTask
+                          _resetLamp
+ ---------------------------------------------------------------------------------
+ (2) _resetLamp                                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _initLampTask                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (3) _SwitchPress                                          4     4      0     168
+                                              6 COMMON     4     4      0
+                        _CounterTask
+ ---------------------------------------------------------------------------------
+ (4) _CounterTask                                         18    16      2     168
+                                              0 COMMON     6     4      2
+                                              0 BANK0     12    12      0
+                    _initCounterTask
+                       _resetCounter
+ ---------------------------------------------------------------------------------
+ (5) _resetCounter                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (5) _initCounterTask                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _LampTask
+     _initLampTask
+     _resetLamp
+   _MotorTask
+     _initMotorTask
+     _resetMotor
+
+ _SwitchPress (ROOT)
+   _CounterTask
+     _initCounterTask
+     _resetCounter
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BANK3               60      0       0       9        0.0%
+BITBANK3            60      0       0       8        0.0%
+SFR3                 0      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+BANK2               60      0       0      11        0.0%
+BITBANK2            60      0       0      10        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50     14      1E       5       37.5%
+BITBANK0            50      0       0       4        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      A       C       1       85.7%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      2A      12        0.0%
+ABS                  0      0      2A       3        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA             100      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.30 build 20200825195618 
+Symbol Table                                                                                   Fri Sep 18 20:37:37 2020
+
+     __size_of_SwitchPress 0040                          pc 0002                         l33 01FD  
+                       l50 01E6                         l36 0206                         l53 0202  
+                       l47 00C1                         l56 011C                         l58 0142  
+                       l59 015C                         fsr 0004                        l901 0157  
+                      l821 0203                        l823 01DE                        l825 01FE  
+                      l833 002A                        l819 01F7                        l851 0055  
+                      l843 0034                        l835 002F                        l861 0076  
+                      l853 0056                        l845 003F                        l837 0032  
+                      l871 0098                        l855 005C                        l847 0049  
+                      l951 01B8                        l881 00BC                        l873 009E  
+                      l865 0078                        l857 0065                        l849 004F  
+                      l875 009F                        l867 0088                        l859 0073  
+                      l947 019D                        l893 0122                        l885 0113  
+                      l877 00A5                        l869 0092                        l949 01B3  
+                      l895 0123                        l887 0118                        l879 00AE  
+                      l897 0131                        l899 014A                        u200 009E  
+                      u201 009D                        u210 00AE                        u211 00AD  
+                      u220 0122                        u221 0121                        u230 0157  
+                      u231 0156                        u170 0055                        u235 0153  
+                      u171 0054                        u180 0065                        u164 003A  
+                      u181 0064                        u317 0045                        u165 0038  
+                      u327 006D                        u337 008E                        u194 0082  
+                      u347 00B6                        u195 007F                        u357 012B  
+                      u367 013C            CounterTask@F874 0034                        fsr0 0004  
+                      indf 0000                       i1l62 01F6                       i1l65 020A  
+                     i1l73 0112                       i1l85 0194              ??_CounterTask 0072  
+                     _TMR1 000E                       _main 019D                       btemp 007E  
+                     start 000E                      ?_main 0070                      i1l831 0207  
+                    i1l911 00E1                      i1l913 00EA                      i1l905 00C2  
+                    i1l827 01EF                      i1l915 00F7                      i1l907 00C7  
+                    i1l931 0170                      i1l923 015D                      i1l829 01F2  
+                    i1l917 00FF                      i1l909 00DC                      i1l941 0185  
+                    i1l925 0161                      i1l933 0171                      i1l919 010D  
+                    i1l943 0192                      i1l935 0177                      i1l927 0164  
+                    i1l945 0193                      i1l937 017B                      i1l929 016D  
+                    i1l939 017F                      u30_24 0192                      u24_20 00CF  
+                    u25_20 010D                      u25_21 010C                      u25_25 0109  
+                    u26_20 0161                      u26_21 0160                      u27_20 0177  
+                    u27_21 0176                      _PORTC 0007                      _PORTD 0008  
+                    u28_20 0185                      u28_21 0184                      u29_20 018F  
+                    u29_21 018B                      u37_27 00F0                      _TRISC 0087  
+                    _TRISD 0088                      pclath 000A           ?_initCounterTask 0070  
+                    status 0003                      wtemp0 007E               CounterTask@i 002A  
+      __end_of_CounterTask 0113            __initialization 0011              ?_initLampTask 0070  
+         __end_of_LampTask 015D               __end_of_main 01C1                     ??_main 0034  
+   __size_of_initMotorTask 0007                     _TMR1IE 0460                     _TMR1IF 0060  
+                   _TMR1CS 0081                     _TMR1ON 0080                 MotorTask@i 002F  
+               MotorTask@j 0033             ??_initLampTask 002C         __size_of_MotorTask 0098  
+             __pdataCOMMON 007B                     saved_w 007E                _CounterTask 00C2  
+  __end_of__initialization 0026              _initMotorTask 01F7             __pcstackCOMMON 0070  
+             __pidataBANK0 01D4                  ?_LampTask 0070             ?_initMotorTask 0070  
+        __end_of_MotorTask 00C2              ??_SwitchPress 0076                 __pmaintext 019D  
+               __pintentry 0004         __size_of_resetLamp 0005                    _T1CKPS0 0084  
+                  _T1CKPS1 0085       __end_of_initLampTask 01E7              ?_resetCounter 0070  
+               ??_LampTask 002C                 __stringtab 01E7        __end_of_SwitchPress 019D  
+                  _nResets 007B                    __ptext1 002A                    __ptext2 0203  
+                  __ptext3 01F7                    __ptext4 0113                    __ptext5 01FE  
+                  __ptext6 01DE                    __ptext7 015D                    __ptext8 00C2  
+                  __ptext9 0207                    _counter 007A             ??_resetCounter 0070  
+     end_of_initialization 0026            ??_initMotorTask 002C          __end_of_resetLamp 0203  
+               _resetMotor 0203   __size_of_initCounterTask 0008     CounterTask@segmentCode 0020  
+                _PORTBbits 0006                  _TRISBbits 0086                  LampTask@i 002F  
+             ?_CounterTask 0070                _SwitchPress 015D        CounterTask@maxCount 0070  
+            __pidataCOMMON 020B      __size_of_initLampTask 0009        start_initialization 0011  
+        __size_of_LampTask 004A                ?_resetMotor 0070                  _MotorTask 002A  
+     __end_of_resetCounter 020B               _initLampTask 01DE                 init_fetch0 01C1  
+              __pdataBANK0 0034          ??_initCounterTask 0070                __pbssCOMMON 007A  
+                ___latbits 0002              __pcstackBANK0 0020                 ?_MotorTask 0070  
+                __pstrings 01E7        __size_of_resetMotor 0004          interrupt_function 0004  
+     __size_of_CounterTask 0051                  _resetLamp 01FE                __stringbase 01EC  
+                 _LampTask 0113      __end_of_initMotorTask 01FE      __size_of_resetCounter 0004  
+             ?_SwitchPress 0070                 ?_resetLamp 0070                ??_MotorTask 002C  
+       __end_of__stringtab 01ED                   __ptext10 01EF               _resetCounter 0207  
+            __size_of_main 0024               ??_resetMotor 002C            _initCounterTask 01EF  
+        MotorTask@NO_STEPS 01ED                 _INTCONbits 000B                   init_ram0 01C5  
+       __end_of_resetMotor 0207                   intlevel1 0000  __end_ofMotorTask@NO_STEPS 01EF  
+              ??_resetLamp 002C                  stringcode 01E7                   stringdir 01E7  
+                 stringtab 01E7    __end_of_initCounterTask 01F7             MotorTask@i_123 0031  

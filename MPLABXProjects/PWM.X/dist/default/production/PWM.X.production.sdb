@@ -1,0 +1,107 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"82 C:\Users\Ezio\MPLABXProjects\PWM.X/system.h
+[v _initPWM initPWM `T(v  1 e 1 0 ]
+"105
+[v _setPWM setPWM `T(v  1 e 1 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"14 C:\Users\Ezio\MPLABXProjects\PWM.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"81 C:\Users\Ezio\MPLABXProjects\PWM.X/system.h
+[v _pwmPeroid pwmPeroid `ui  1 e 2 0 ]
+[v _pwmFreq pwmFreq `ui  1 e 2 0 ]
+[s S25 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"295 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
+[u S34 . 1 `S25 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES34  1 e 1 @7 ]
+"892
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
+[s S50 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+"924
+[s S54 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+]
+[u S59 . 1 `S50 1 . 1 0 `S54 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES59  1 e 1 @23 ]
+"1073
+[v _CCPR2 CCPR2 `VEus  1 e 2 @27 ]
+"2446
+[v _CCP1M2 CCP1M2 `VEb  1 e 0 @186 ]
+"2449
+[v _CCP1M3 CCP1M3 `VEb  1 e 0 @187 ]
+"2872
+[v _T2CKPS0 T2CKPS0 `VEb  1 e 0 @144 ]
+"2875
+[v _T2CKPS1 T2CKPS1 `VEb  1 e 0 @145 ]
+"2902
+[v _TMR2ON TMR2ON `VEb  1 e 0 @146 ]
+"2965
+[v _TRISC2 TRISC2 `VEb  1 e 0 @1082 ]
+"14 C:\Users\Ezio\MPLABXProjects\PWM.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"16
+[v main@duty duty `ui  1 a 2 9 ]
+"34
+} 0
+"105 C:\Users\Ezio\MPLABXProjects\PWM.X/system.h
+[v _setPWM setPWM `T(v  1 e 1 0 ]
+{
+[v setPWM@dutyCycle dutyCycle `ui  1 p 2 0 ]
+"114
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 12 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 8 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 10 ]
+"53
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 7 ]
+"5
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+"30
+} 0
+"82 C:\Users\Ezio\MPLABXProjects\PWM.X/system.h
+[v _initPWM initPWM `T(v  1 e 1 0 ]
+{
+[v initPWM@freq freq `ui  1 p 2 0 ]
+"103
+} 0

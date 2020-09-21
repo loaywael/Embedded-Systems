@@ -1,0 +1,172 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"85 C:\Users\Ezio\MPLABXProjects\Test.X/system.h
+[v _initMotorTask initMotorTask `T(v  1 e 1 0 ]
+"90
+[v _resetMotor resetMotor `T(v  1 e 1 0 ]
+"94
+[v _MotorTask MotorTask `T(v  1 e 1 0 ]
+"123
+[v _initLampTask initLampTask `T(v  1 e 1 0 ]
+"132
+[v _resetLamp resetLamp `T(v  1 e 1 0 ]
+"138
+[v _LampTask LampTask `T(v  1 e 1 0 ]
+"153
+[v _initCounterTask initCounterTask `T(v  1 e 1 0 ]
+"158
+[v _resetCounter resetCounter `T(v  1 e 1 0 ]
+"162
+[v _CounterTask CounterTask `T(v  1 e 1 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.30\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"14 C:\Users\Ezio\MPLABXProjects\Test.X\main.c
+[v _SwitchPress SwitchPress `II(v  1 e 1 0 ]
+"34
+[v _main main `(v  1 e 1 0 ]
+[s S51 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"233 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
+[u S60 . 1 `S51 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES60  1 e 1 @6 ]
+"278
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"340
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+[s S72 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"477
+[s S81 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S86 . 1 `S72 1 . 1 0 `S81 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES86  1 e 1 @11 ]
+"634
+[v _TMR1 TMR1 `VEus  1 e 2 @14 ]
+[s S30 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"1392
+[u S39 . 1 `S30 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES39  1 e 1 @134 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"2857
+[v _T1CKPS0 T1CKPS0 `VEb  1 e 0 @132 ]
+"2860
+[v _T1CKPS1 T1CKPS1 `VEb  1 e 0 @133 ]
+"2884
+[v _TMR1CS TMR1CS `VEb  1 e 0 @129 ]
+"2887
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
+"2890
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"2893
+[v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
+"13 C:\Users\Ezio\MPLABXProjects\Test.X\main.c
+[v _counter counter `uc  1 e 1 0 ]
+[v _nResets nResets `uc  1 e 1 0 ]
+"34
+[v _main main `(v  1 e 1 0 ]
+{
+"61
+} 0
+"94 C:\Users\Ezio\MPLABXProjects\Test.X/system.h
+[v _MotorTask MotorTask `T(v  1 e 1 0 ]
+{
+"109
+[v MotorTask@i_123 i `i  1 a 2 17 ]
+"98
+[v MotorTask@i i `i  1 a 2 15 ]
+"96
+[v MotorTask@j j `uc  1 a 1 19 ]
+"120
+} 0
+"90
+[v _resetMotor resetMotor `T(v  1 e 1 0 ]
+{
+"92
+} 0
+"85
+[v _initMotorTask initMotorTask `T(v  1 e 1 0 ]
+{
+"88
+} 0
+"138
+[v _LampTask LampTask `T(v  1 e 1 0 ]
+{
+"140
+[v LampTask@i i `i  1 a 2 15 ]
+"150
+} 0
+"132
+[v _resetLamp resetLamp `T(v  1 e 1 0 ]
+{
+"136
+} 0
+"123
+[v _initLampTask initLampTask `T(v  1 e 1 0 ]
+{
+"130
+} 0
+"14 C:\Users\Ezio\MPLABXProjects\Test.X\main.c
+[v _SwitchPress SwitchPress `II(v  1 e 1 0 ]
+{
+"32
+} 0
+"162 C:\Users\Ezio\MPLABXProjects\Test.X/system.h
+[v _CounterTask CounterTask `T(v  1 e 1 0 ]
+{
+"170
+[v CounterTask@i i `i  1 a 2 10 ]
+"164
+[v CounterTask@segmentCode segmentCode `[10]uc  1 a 10 0 ]
+"162
+[v CounterTask@maxCount maxCount `i  1 p 2 0 ]
+"163
+[v CounterTask@F874 F874 `[10]uc  1 s 10 F874 ]
+"176
+} 0
+"158
+[v _resetCounter resetCounter `T(v  1 e 1 0 ]
+{
+"160
+} 0
+"153
+[v _initCounterTask initCounterTask `T(v  1 e 1 0 ]
+{
+"156
+} 0
