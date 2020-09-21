@@ -1,7 +1,12 @@
 # Embedded-Systems   
 Embedded Systems | Interfacing and Device Drivers
 
-<
+<h3 align=center>Interrrupt & Interfacing</h3>
+<img align="middle" src="interrupt.gif" alt="lane detected in green" style="width: 100%;"/>
+
+<h3 align=center>PWM Motor Speed Control</h3>
+<img align="middle" src="pwm.gif" alt="lane detected in green" style="width: 100%;"/>
+
 
 # Requirements   
 OS: Windows, Linux   
@@ -23,8 +28,3 @@ Simulation: Proteus-8
     - LED Dimmer
     - Motor Speed Control
     
-<h3 align=center>Interrrupt & Interfacing</h3>
-<img align="middle" src="interrupt.gif" alt="lane detected in green" style="width: 100%;"/>
-
-<h3 align=center>PWM Motor Speed Control</h3>
-<img align="middle" src="pwm.gif" alt="lane detected in green" style="width: 100%;"/>
