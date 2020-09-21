@@ -1,6 +1,8 @@
 # Embedded-Systems   
 Embedded Systems | Interfacing and Device Drivers
 
+<
+
 # Requirements   
 OS: Windows, Linux   
 Hardware:   PIC16F877A   
@@ -20,3 +22,9 @@ Simulation: Proteus-8
   - CCP Module Capture/Compare/PWM
     - LED Dimmer
     - Motor Speed Control
+    
+<h3 align=center>Interrrupt & Interfacing</h3>
+<img align="middle" src="interrupt.gif" alt="lane detected in green" style="width: 100%;"/>
+
+<h3 align=center>PWM Motor Speed Control</h3>
+<img align="middle" src="pwm.gif" alt="lane detected in green" style="width: 100%;"/>
